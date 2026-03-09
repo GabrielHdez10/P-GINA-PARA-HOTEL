@@ -7,24 +7,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Suavizado de scroll para navegación interna */
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-white text-slate-900 overflow-x-hidden">
 
-    <a href="https://wa.me/522282214830" target="_blank" class="fixed bottom-8 right-8 z-[60] bg-[#25d366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300">
-        <i class="fab fa-whatsapp text-3xl"></i>
+    <a href="https://wa.me/522282214830" target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[60] bg-[#25d366] text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300">
+        <i class="fab fa-whatsapp text-2xl md:text-3xl"></i>
     </a>
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-[0.3em] text-blue-950 uppercase">Paradiso</div>
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-blue-950 uppercase">Paradiso</div>
             
-            <div class="flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            <div class="hidden md:flex space-x-8 lg:space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
                 <a href="#inicio" class="hover:text-amber-600 transition">Inicio</a>
                 <a href="#habitaciones" class="hover:text-amber-600 transition">Habitaciones</a>
                 <a href="#servicios" class="hover:text-amber-600 transition">Servicios</a>
                 <a href="#galeria" class="hover:text-amber-600 transition">Galería</a>
                 <a href="#ubicacion" class="hover:text-amber-600 transition">Ubicación</a>
             </div>
+
+            <button class="md:hidden text-blue-950 text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 flex flex-col items-center py-6 space-y-4 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+            <a href="#habitaciones" onclick="toggleMenu()">Habitaciones</a>
+            <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+            <a href="#galeria" onclick="toggleMenu()">Galería</a>
+            <a href="#ubicacion" onclick="toggleMenu()">Ubicación</a>
         </div>
     </nav>
 
@@ -33,76 +49,73 @@
             <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80" 
                  class="absolute inset-0 w-full h-full object-cover brightness-50 scale-105" alt="Hotel View">
             
-            <div class="relative z-10 text-center text-white px-4">
-                <span class="uppercase tracking-[0.5em] text-xs mb-4 block font-light">Un santuario de serenidad en Tecolutla</span>
-                <h1 class="text-6xl md:text-9xl font-bold mb-6 leading-tight">Tu escape <br> <span class="italic font-light">Privado</span></h1>
-                <div class="h-px w-32 bg-amber-500 mx-auto mb-8"></div>
-                <p class="text-sm uppercase tracking-widest font-light opacity-80">Descubre la elegancia frente al mar</p>
+            <div class="relative z-10 text-center text-white px-6">
+                <span class="uppercase tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-xs mb-4 block font-light">Un santuario de serenidad en Tecolutla</span>
+                <h1 class="text-4xl md:text-7xl lg:text-9xl font-bold mb-6 leading-tight">Tu escape <br> <span class="italic font-light">Privado</span></h1>
+                <div class="h-px w-20 md:w-32 bg-amber-500 mx-auto mb-8"></div>
+                <p class="text-[10px] md:text-sm uppercase tracking-widest font-light opacity-80">Descubre la elegancia frente al mar</p>
             </div>
         </section>
 
-        <section id="servicios" class="bg-white py-24 border-t border-gray-50">
+        <section id="servicios" class="bg-white py-16 md:py-24 border-t border-gray-50">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold text-blue-950 mb-4 uppercase tracking-widest">Servicios Exclusivos</h2>
-                    <div class="h-1 w-20 bg-amber-500 mx-auto"></div>
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-5xl font-bold text-blue-950 mb-4 uppercase tracking-widest">Servicios Exclusivos</h2>
+                    <div class="h-1 w-16 md:w-20 bg-amber-500 mx-auto"></div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="text-center p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300">
-                        <div class="text-amber-600 text-4xl mb-6"><i class="fas fa-wifi"></i></div>
-                        <h3 class="text-xl font-bold mb-4 text-blue-950">Wi-Fi de Alta Velocidad</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Conexión estable y rápida en todo el hotel, ideal para nómadas digitales y trabajo remoto.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                    <div class="text-center p-6 md:p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300">
+                        <div class="text-amber-600 text-3xl md:text-4xl mb-4 md:mb-6"><i class="fas fa-wifi"></i></div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 text-blue-950">Wi-Fi Alta Velocidad</h3>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Conexión estable y rápida en todo el hotel, ideal para nómadas digitales.</p>
                     </div>
-
-                    <div class="text-center p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300">
-                        <div class="text-amber-600 text-4xl mb-6"><i class="fas fa-parking"></i></div>
-                        <h3 class="text-xl font-bold mb-4 text-blue-950">Estacionamiento Privado</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Seguridad total para tu vehículo en nuestro espacio exclusivo monitoreado las 24 horas.</p>
+                    <div class="text-center p-6 md:p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300">
+                        <div class="text-amber-600 text-3xl md:text-4xl mb-4 md:mb-6"><i class="fas fa-parking"></i></div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 text-blue-950">Estacionamiento</h3>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Seguridad total para tu vehículo monitoreado las 24 horas.</p>
                     </div>
-
-                    <div class="text-center p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300">
-                        <div class="text-amber-600 text-4xl mb-6"><i class="fas fa-utensils"></i></div>
-                        <h3 class="text-xl font-bold mb-4 text-blue-950">Restaurante & Desayunos</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Disfruta de desayunos incluidos y lo mejor de la cocina local en nuestra zona de restaurante.</p>
+                    <div class="text-center p-6 md:p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-all duration-300 sm:col-span-2 md:col-span-1">
+                        <div class="text-amber-600 text-3xl md:text-4xl mb-4 md:mb-6"><i class="fas fa-utensils"></i></div>
+                        <h3 class="text-lg md:text-xl font-bold mb-4 text-blue-950">Restaurante</h3>
+                        <p class="text-gray-500 text-xs md:text-sm leading-relaxed">Disfruta de desayunos incluidos y lo mejor de la cocina local.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="habitaciones" class="max-w-7xl mx-auto px-6 py-32">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <section id="habitaciones" class="max-w-7xl mx-auto px-6 py-16 md:py-32">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6">
                 <div class="max-w-xl">
-                    <h2 class="text-4xl md:text-6xl font-bold text-blue-950 mb-6">Estancias con Alma</h2>
-                    <p class="text-gray-500 leading-relaxed italic">Cada una de nuestras suites ha sido diseñada para ser un refugio de paz, combinando el lujo con la naturaleza.</p>
+                    <h2 class="text-3xl md:text-6xl font-bold text-blue-950 mb-4 md:mb-6 leading-tight">Estancias con Alma</h2>
+                    <p class="text-gray-500 text-sm md:text-base leading-relaxed italic">Refugios de paz que combinan el lujo con la naturaleza.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
                 <div class="group">
-                    <div class="relative overflow-hidden mb-8 rounded-lg shadow-lg">
+                    <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                         <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" 
-                             class="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110">
+                             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     </div>
-                    <h3 class="text-2xl font-bold mb-2">Suite</h3>
-                    <p class="text-xs text-amber-600 uppercase tracking-widest mb-4 font-semibold">Exclusividad Máxima</p>
+                    <h3 class="text-xl md:text-2xl font-bold mb-2">Suite Paradiso</h3>
+                    <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Exclusividad Máxima</p>
                 </div>
-            </div>
+                </div>
         </section>
 
-        <section id="galeria" class="max-w-7xl mx-auto px-4 py-20 bg-slate-50 rounded-3xl mb-20">
-            <h2 class="text-center text-3xl font-bold text-blue-950 mb-12 uppercase tracking-widest">Nuestra Galería</h2>
-            <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl">
+        <section id="galeria" class="px-4 py-16 md:py-20 bg-slate-50 md:rounded-3xl mx-0 md:mx-6 mb-20">
+            <h2 class="text-center text-2xl md:text-3xl font-bold text-blue-950 mb-8 md:mb-12 uppercase tracking-widest">Galería</h2>
+            <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
                 <div class="flex transition-transform duration-1000 ease-in-out" id="slider-container">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80" class="w-full h-[600px] object-cover flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c8cd5b651030?auto=format&fit=crop&w=1200&q=80" class="w-full h-[600px] object-cover flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" class="w-full h-[600px] object-cover flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80" class="w-full h-[300px] md:h-[600px] object-cover flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c8cd5b651030?auto=format&fit=crop&w=1200&q=80" class="w-full h-[300px] md:h-[600px] object-cover flex-shrink-0">
                 </div>
-                <button id="prevBtn" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/20 hover:bg-white/50 backdrop-blur-md p-4 rounded-full text-white transition-all">
-                    <i class="fas fa-chevron-left"></i>
+                <button id="prevBtn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white/20 backdrop-blur-md p-2 md:p-4 rounded-full text-white">
+                    <i class="fas fa-chevron-left text-xs md:text-base"></i>
                 </button>
-                <button id="nextBtn" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/20 hover:bg-white/50 backdrop-blur-md p-4 rounded-full text-white transition-all">
-                    <i class="fas fa-chevron-right"></i>
+                <button id="nextBtn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white/20 backdrop-blur-md p-2 md:p-4 rounded-full text-white">
+                    <i class="fas fa-chevron-right text-xs md:text-base"></i>
                 </button>
             </div>
         </section>
@@ -117,16 +130,74 @@
                 </iframe>
             </div>
         </section>
+
+        <section id="opiniones" class="bg-slate-50 py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-blue-950 mb-4 uppercase tracking-widest">Lo que dicen nuestros huéspedes</h2>
+                    <div class="h-1 w-20 bg-amber-500 mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-500 mb-4">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 italic mb-6">"La mejor vista de Tecolutla. El Wi-Fi es realmente rápido, pude trabajar sin problemas mientras disfrutaba del mar."</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-950 rounded-full flex items-center justify-center text-white font-bold mr-3 text-xs">RC</div>
+                            <span class="font-bold text-blue-950 text-sm tracking-widest uppercase">Ricardo C.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-500 mb-4">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 italic mb-6">"El desayuno es increíble y la seguridad del estacionamiento me dio mucha tranquilidad. ¡Volveremos pronto!"</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-950 rounded-full flex items-center justify-center text-white font-bold mr-3 text-xs">MA</div>
+                            <span class="font-bold text-blue-950 text-sm tracking-widest uppercase">María A.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="text-amber-500 mb-4">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 italic mb-6">"Un oasis de paz. La atención por WhatsApp fue inmediata y resolver todas mis dudas antes de llegar fue clave."</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-950 rounded-full flex items-center justify-center text-white font-bold mr-3 text-xs">JS</div>
+                            <span class="font-bold text-blue-950 text-sm tracking-widest uppercase">Juan S.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
-    <footer class="bg-slate-50 border-t border-gray-100 py-20 text-center">
-        <div class="mb-8">
+    <footer class="bg-slate-50 border-t border-gray-100 py-12 md:py-20 text-center px-6">
+        <div class="mb-6 md:mb-8">
             <div class="text-xl font-bold tracking-[0.3em] text-blue-950 uppercase mb-4">Paradiso</div>
-            <p class="text-gray-400 text-xs italic">El lujo de la simplicidad.</p>
+            <p class="text-gray-400 text-[10px] italic">El lujo de la simplicidad.</p>
         </div>
-        <p class="text-[9px] uppercase tracking-[0.8em] text-gray-400">© 2026 Tecolutla, Veracruz</p>
+        <p class="text-[8px] md:text-[9px] uppercase tracking-[0.6em] md:tracking-[0.8em] text-gray-400">© 2026 Tecolutla, Veracruz</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
     <script src="src/main.js"></script>
 </body>
 </html>
