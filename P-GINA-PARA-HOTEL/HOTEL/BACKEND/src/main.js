@@ -1,26 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- SLIDER AUTOMÁTICO ---
-    const sliderContainer = document.getElementById('slider-container');
-    const images = sliderContainer?.querySelectorAll('img');
-    let currentIndex = 0;
+window.onload = function() {
+    console.log("¡JavaScript cargado correctamente! 🚀");
 
-    if (sliderContainer && images.length > 0) {
-        // Función para cambiar de imagen
-        const nextSlide = () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        };
+    const container = document.getElementById('slider-container');
+    const next = document.getElementById('nextBtn');
+    const prev = document.getElementById('prevBtn');
+    const imgs = container.querySelectorAll('img');
+    
+    let index = 0;
 
-        // Cambiar automáticamente cada 5 segundos
-        setInterval(nextSlide, 5000);
-
-        // Botones manuales (opcional, ya los tienes en el HTML)
-        document.getElementById('nextBtn')?.addEventListener('click', nextSlide);
-        document.getElementById('prevBtn')?.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        });
+    if (!container || imgs.length === 0) {
+        console.error("No se encontró el contenedor o las imágenes. Revisa los IDs en el HTML.");
+        return;
     }
 
-    console.log("Slider del Hotel Paradiso cargado correctamente 🌴");
-});
+    next.addEventListener('click', () => {
+        index = (index + 1) % imgs.length;
+        container.style.transform = `translateX(-${index * 100}%)`;
+        console.log("Cambiando a imagen:", index);
+    });
+
+    prev.addEventListener('click', () => {
+        index = (index - 1 + imgs.length) % imgs.length;
+        container.style.transform = `translateX(-${index * 100}%)`;
+        console.log("Regresando a imagen:", index);
+    });
+};
