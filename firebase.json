@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "P-GINA-PARA-HOTEL/HOTEL/FRONTEND",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
