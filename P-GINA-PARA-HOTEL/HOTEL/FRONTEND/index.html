@@ -243,8 +243,53 @@
     </div>
 </section>
 
-    </main>
+<!-- SECCIÓN DE CONTACTO / SUGERENCIAS -->
+<section id="contacto" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Texto Informativo -->
+            <div>
+                <span class="text-xs uppercase tracking-[0.5em] text-amber-600 mb-4 block font-semibold">Contacto Directo</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-950 mb-8 font-serif leading-tight">¿Tienes alguna duda o sugerencia?</h2>
+                <p class="text-gray-500 mb-8 leading-relaxed">Tu opinión es privada y nos ayuda a mejorar. Escríbenos y nuestro equipo te responderá personalmente al correo proporcionado.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 text-blue-950">
+                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-amber-600">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span class="text-sm font-medium">hotelparadiso@gmail.com</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Formulario -->
+            <div class="bg-slate-50 p-8 md:p-10 rounded-3xl border border-gray-100">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <input type="text" id="contact-nombre" placeholder="Nombre" required 
+                               class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+                        <input type="email" id="contact-email" placeholder="Correo electrónico" required 
+                               class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+                    </div>
+                    <input type="text" id="contact-asunto" placeholder="Asunto" required 
+                           class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm focus:ring-2 focus:ring-amber-200 outline-none">
+                    <textarea id="contact-mensaje" rows="4" placeholder="¿En qué podemos ayudarte?" required 
+                              class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm focus:ring-2 focus:ring-amber-200 outline-none resize-none"></textarea>
+                    
+                    <button type="submit" class="w-full bg-blue-950 text-white font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-amber-600 transition shadow-md">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    </main>
+    
     <footer class="bg-slate-50 border-t border-gray-100 py-12 md:py-20 text-center px-6">
         <div class="mb-6 md:mb-8">
             <div class="text-xl font-bold tracking-[0.3em] text-blue-950 uppercase mb-4">Paradiso</div>
@@ -252,6 +297,33 @@
         </div>
         <p class="text-[8px] md:text-[9px] uppercase tracking-[0.6em] md:tracking-[0.8em] text-gray-400">© 2026 Tecolutla, Veracruz</p>
     </footer>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDGt8kUlJkqhTLx2wNi1eaY-8oONO5VId0",
+        authDomain: "hotel-project-a24d0.firebaseapp.com",
+        projectId: "hotel-project-a24d0",
+        storageBucket: "hotel-project-a24d0.firebasestorage.app",
+        messagingSenderId: "14169222389",
+        appId: "1:14169222389:web:3fb8f24c04ac829d66e9bc"
+    };
+
+    // 1. Inicializar
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 2. IMPORTANTE: Exponer las funciones globalmente para que contacto.js las use
+    window.db = db;
+    window.collection = collection;
+    window.addDoc = addDoc;
+    window.serverTimestamp = serverTimestamp;
+</script>
+
+<!-- Después de Firebase, cargas tu lógica -->
+<script src="src/js/contacto.js"></script>
 
     <script>
     function toggleMenu() {
