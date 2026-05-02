@@ -160,6 +160,18 @@
                                       class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm text-slate-900 placeholder:text-gray-300 focus:ring-2 focus:ring-amber-200 focus:border-amber-400 outline-none transition duration-150 resize-none"></textarea>
                         </div>
 
+                        <!-- Contenedor de Cálculo Dinámico -->
+                        <div id="detalle-costo" class="bg-amber-50 p-6 rounded-2xl border border-amber-100 hidden transition-all duration-500">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] uppercase tracking-widest text-amber-800 font-bold">Estancia:</span>
+                                <span id="resumen-noches" class="text-sm font-medium text-blue-950">0 noches</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] uppercase tracking-widest text-amber-800 font-bold">Total estimado:</span>
+                                <span id="total-precio" class="text-xl font-black text-blue-950">$0.00</span>
+                            </div>
+                        </div>
+
                         <!-- Botón de Envío -->
                         <div class="pt-6">
                             <button type="submit" 
@@ -229,31 +241,14 @@
         <p class="text-[8px] md:text-[9px] uppercase tracking-[0.6em] md:tracking-[0.8em] text-gray-400">© 2026 Tecolutla, Veracruz | Todos los derechos reservados</p>
     </footer>
 
-    <!-- SCRIPTS -->
-    <script>
-        // Función para el menú móvil
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // --- REFERENCIA AL PUNTO 11 DE TU PLAN (JS) ---
-        // Aquí es donde en el siguiente paso agregaremos la validación JS
-        console.log("Formulario de reserva HTML cargado. Pendiente Punto 11: validacion.js 🌴");
-    </script>
-
 <!-- SCRIPTS -->
     <script>
-        // Tu función existente para el menú móvil
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
     </script>
     
-    <!-- VINCIULACIÓN DEL NUEVO ARCHIVO DE VALIDACIÓN -->
     <script src="src/js/validacion.js"></script>
-
 </body>
-
 </html>
