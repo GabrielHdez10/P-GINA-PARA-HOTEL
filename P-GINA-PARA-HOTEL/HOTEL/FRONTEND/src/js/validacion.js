@@ -63,17 +63,44 @@ document.addEventListener('DOMContentLoaded', () => {
         element.classList.remove('border-red-500');
     };
 
+    // --- EVENTO SUBMIT ACTUALIZADO PARA WHATSAPP ---
     form.addEventListener('submit', e => {
         e.preventDefault();
-        let isValid = true;
-
+        
+        // Ejecutamos la validación (Punto 11)
+        let isValid = true; 
         if (nombreInput.value.trim().length < 3) {
             setError(nombreInput, 'Nombre demasiado corto');
             isValid = false;
-        } else { setSuccess(nombreInput); }
+        } else { 
+            setSuccess(nombreInput); 
+        }
 
         if (isValid) {
-            alert("Reserva enviada. ¡Gracias por elegirnos!");
+            // 1. CAPTURAR DATOS PARA EL MENSAJE
+            const nombre = nombreInput.value;
+            const entrada = fechaEntradaInput.value;
+            const salida = fechaSalidaInput.value;
+            const personas = numPersonasInput.value;
+            const habitacion = tipoHabitacionInput.options[tipoHabitacionInput.selectedIndex].text;
+            const total = document.getElementById('total-precio').innerText;
+
+            // 2. FORMATEAR EL MENSAJE (UTF-8 para que WhatsApp entienda espacios y emojis)
+            const mensaje = `Hola Hotel Paradiso! %0A` +
+                            `Quisiera realizar una reserva:%0A` +
+                            `*Nombre:* ${nombre}%0A` +
+                            `*Habitación:* ${habitacion}%0A` +
+                            `*Entrada:* ${entrada}%0A` +
+                            `*Salida:* ${salida}%0A` +
+                            `*Personas:* ${personas}%0A` +
+                            `*Total estimado:* ${total}`;
+
+            const telefono = "522282214830";
+            const url = `https://wa.me/${telefono}?text=${mensaje}`;
+
+            // 3. REDIRECCIÓN
+            console.log("Redirigiendo a WhatsApp... 🚀");
+            window.open(url, '_blank');
         }
     });
 
