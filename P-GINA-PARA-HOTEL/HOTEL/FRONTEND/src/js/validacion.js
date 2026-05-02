@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contenedorCosto.classList.remove('hidden');
             } else {
                 contenedorCosto.classList.add('hidden');
+                document.getElementById('total-precio').innerText = "$0.00";
             }
         }
     };
@@ -63,67 +64,100 @@ document.addEventListener('DOMContentLoaded', () => {
         element.classList.remove('border-red-500');
     };
 
-    // --- EVENTO SUBMIT ACTUALIZADO PARA WHATSAPP ---
+    // --- EVENTO SUBMIT ACTUALIZADO CON PARCHE DE FECHAS ---
     form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // 1. Validaciones previas
-    if (nombreInput.value.trim().length < 3) {
-        setError(nombreInput, 'Nombre demasiado corto');
-        return;
-    }
-    setSuccess(nombreInput);
-
-    // 2. Preparar los datos
-    const habitacionSelect = tipoHabitacionInput.options[tipoHabitacionInput.selectedIndex];
-    const datosReserva = {
-        nombre: nombreInput.value,
-        entrada: fechaEntradaInput.value,
-        salida: fechaSalidaInput.value,
-        personas: numPersonasInput.value,
-        habitacion: habitacionSelect.text,
-        total: document.getElementById('total-precio').innerText,
-        fechaSolicitud: new Date().toISOString(),
-        estado: 'pendiente'
-    };
-
-    try {
-        console.log("Guardando en Firestore... ☁️");
+        e.preventDefault();
         
-        // 3. SE GUARDAN EN FIRESTORE (Colección 'reservas')
-        const docRef = await window.addDoc(window.collection(window.db, "reservas"), datosReserva);
-        console.log("Reserva guardada con ID: ", docRef.id);
+        // --- VALIDACIONES DE SEGURIDAD ---
+        const nombre = nombreInput.value.trim();
+        const f1 = new Date(fechaEntradaInput.value + 'T00:00:00');
+        const f2 = new Date(fechaSalidaInput.value + 'T00:00:00');
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
 
-        // 4. PREPARAR WHATSAPP
-        const mensaje = `Hola Hotel Paradiso! 🌴%0A` +
-                        `He solicitado una reserva:%0A` +
-                        `*Folio:* ${docRef.id.substring(0,6)}%0A` +
-                        `*Nombre:* ${datosReserva.nombre}%0A` +
-                        `*Habitación:* ${datosReserva.habitacion}%0A` +
-                        `*Total:* ${datosReserva.total}`;
+        let isValid = true;
 
-        const urlWhatsapp = `https://wa.me/522282214830?text=${mensaje}`;
+        // Validar Nombre
+        if (nombre.length < 3) {
+            setError(nombreInput, 'Nombre demasiado corto');
+            isValid = false;
+        } else {
+            setSuccess(nombreInput);
+        }
 
-        // 5. REDIRIGIR A CONFIRMACIÓN (Punto 14)
-        const queryParams = new URLSearchParams({
-            nombre: datosReserva.nombre,
-            habitacion: datosReserva.habitacion,
-            entrada: datosReserva.entrada,
-            salida: datosReserva.salida,
-            total: datosReserva.total
-        }).toString();
+        // Validar que las fechas no estén vacías
+        if (isNaN(f1.getTime()) || isNaN(f2.getTime())) {
+            alert("Por favor, selecciona fechas válidas.");
+            return;
+        }
 
-        // Abrir WhatsApp en pestaña nueva
-        window.open(urlWhatsapp, '_blank');
-        
-        // Ir a confirmación en la misma pestaña
-        window.location.href = `confirmacion.html?${queryParams}`;
+        // Validar que no sea en el pasado
+        if (f1 < hoy) {
+            setError(fechaEntradaInput, 'No puedes reservar en el pasado');
+            isValid = false;
+        } else {
+            setSuccess(fechaEntradaInput);
+        }
 
-    } catch (error) {
-        console.error("Error al guardar en Cloud Firestore:", error);
-        alert("Hubo un error al procesar tu reserva en la nube. Intenta de nuevo.");
-    }
-});
+        // Validar que la salida sea después de la entrada (EL ERROR QUE TENÍAS)
+        if (f2 <= f1) {
+            setError(fechaSalidaInput, 'La salida debe ser posterior a la entrada');
+            isValid = false;
+        } else {
+            setSuccess(fechaSalidaInput);
+        }
+
+        if (!isValid) return; // Si algo está mal, detenemos todo aquí
+
+        // 2. Preparar los datos si todo es válido
+        const habitacionSelect = tipoHabitacionInput.options[tipoHabitacionInput.selectedIndex];
+        const datosReserva = {
+            nombre: nombre,
+            entrada: fechaEntradaInput.value,
+            salida: fechaSalidaInput.value,
+            personas: numPersonasInput.value,
+            habitacion: habitacionSelect.text,
+            total: document.getElementById('total-precio').innerText,
+            fechaSolicitud: new Date().toISOString(),
+            estado: 'pendiente'
+        };
+
+        try {
+            console.log("Guardando en Firestore... ");
+            
+            // 3. SE GUARDAN EN FIRESTORE
+            const docRef = await window.addDoc(window.collection(window.db, "reservas"), datosReserva);
+            console.log("Reserva guardada con ID: ", docRef.id);
+
+            // 4. PREPARAR WHATSAPP
+            const mensaje = `Hola Hotel Paradiso!%0A` +
+                            `He solicitado una reserva:%0A` +
+                            `*Folio:* ${docRef.id.substring(0,6)}%0A` +
+                            `*Nombre:* ${datosReserva.nombre}%0A` +
+                            `*Habitación:* ${datosReserva.habitacion}%0A` +
+                            `*Fechas:* ${datosReserva.entrada} al ${datosReserva.salida}%0A` +
+                            `*Personas:* ${datosReserva.personas}%0A` +
+                            `*Total:* ${datosReserva.total}`;
+
+            const urlWhatsapp = `https://wa.me/522282214830?text=${mensaje}`;
+
+            // 5. REDIRIGIR A CONFIRMACIÓN
+            const queryParams = new URLSearchParams({
+                nombre: datosReserva.nombre,
+                habitacion: datosReserva.habitacion,
+                entrada: datosReserva.entrada,
+                salida: datosReserva.salida,
+                total: datosReserva.total
+            }).toString();
+
+            window.open(urlWhatsapp, '_blank');
+            window.location.href = `confirmacion.html?${queryParams}`;
+
+        } catch (error) {
+            console.error("Error al guardar en Cloud Firestore:", error);
+            alert("Hubo un error al procesar tu reserva en la nube.");
+        }
+    });
 
     console.log("Sistema del Hotel Paradiso Operativo 🛡️");
 });
