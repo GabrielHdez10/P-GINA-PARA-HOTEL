@@ -64,45 +64,66 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- EVENTO SUBMIT ACTUALIZADO PARA WHATSAPP ---
-    form.addEventListener('submit', e => {
-        e.preventDefault();
+    form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // 1. Validaciones previas
+    if (nombreInput.value.trim().length < 3) {
+        setError(nombreInput, 'Nombre demasiado corto');
+        return;
+    }
+    setSuccess(nombreInput);
+
+    // 2. Preparar los datos
+    const habitacionSelect = tipoHabitacionInput.options[tipoHabitacionInput.selectedIndex];
+    const datosReserva = {
+        nombre: nombreInput.value,
+        entrada: fechaEntradaInput.value,
+        salida: fechaSalidaInput.value,
+        personas: numPersonasInput.value,
+        habitacion: habitacionSelect.text,
+        total: document.getElementById('total-precio').innerText,
+        fechaSolicitud: new Date().toISOString(),
+        estado: 'pendiente'
+    };
+
+    try {
+        console.log("Guardando en Firestore... ☁️");
         
-        // Ejecutamos la validación (Punto 11)
-        let isValid = true; 
-        if (nombreInput.value.trim().length < 3) {
-            setError(nombreInput, 'Nombre demasiado corto');
-            isValid = false;
-        } else { 
-            setSuccess(nombreInput); 
-        }
+        // 3. SE GUARDAN EN FIRESTORE (Colección 'reservas')
+        const docRef = await window.addDoc(window.collection(window.db, "reservas"), datosReserva);
+        console.log("Reserva guardada con ID: ", docRef.id);
 
-        if (isValid) {
-            // 1. CAPTURAR DATOS PARA EL MENSAJE
-            const nombre = nombreInput.value;
-            const entrada = fechaEntradaInput.value;
-            const salida = fechaSalidaInput.value;
-            const personas = numPersonasInput.value;
-            const habitacion = tipoHabitacionInput.options[tipoHabitacionInput.selectedIndex].text;
-            const total = document.getElementById('total-precio').innerText;
+        // 4. PREPARAR WHATSAPP
+        const mensaje = `Hola Hotel Paradiso! 🌴%0A` +
+                        `He solicitado una reserva:%0A` +
+                        `*Folio:* ${docRef.id.substring(0,6)}%0A` +
+                        `*Nombre:* ${datosReserva.nombre}%0A` +
+                        `*Habitación:* ${datosReserva.habitacion}%0A` +
+                        `*Total:* ${datosReserva.total}`;
 
-            // 2. FORMATEAR EL MENSAJE (UTF-8 para que WhatsApp entienda espacios y emojis)
-            const mensaje = `Hola Hotel Paradiso! %0A` +
-                            `Quisiera realizar una reserva:%0A` +
-                            `*Nombre:* ${nombre}%0A` +
-                            `*Habitación:* ${habitacion}%0A` +
-                            `*Entrada:* ${entrada}%0A` +
-                            `*Salida:* ${salida}%0A` +
-                            `*Personas:* ${personas}%0A` +
-                            `*Total estimado:* ${total}`;
+        const urlWhatsapp = `https://wa.me/522282214830?text=${mensaje}`;
 
-            const telefono = "522282214830";
-            const url = `https://wa.me/${telefono}?text=${mensaje}`;
+        // 5. REDIRIGIR A CONFIRMACIÓN (Punto 14)
+        const queryParams = new URLSearchParams({
+            nombre: datosReserva.nombre,
+            habitacion: datosReserva.habitacion,
+            entrada: datosReserva.entrada,
+            salida: datosReserva.salida,
+            total: datosReserva.total
+        }).toString();
 
-            // 3. REDIRECCIÓN
-            console.log("Redirigiendo a WhatsApp... 🚀");
-            window.open(url, '_blank');
-        }
-    });
+        // Abrir WhatsApp en pestaña nueva
+        window.open(urlWhatsapp, '_blank');
+        
+        // Ir a confirmación en la misma pestaña
+        window.location.href = `confirmacion.html?${queryParams}`;
+
+    } catch (error) {
+        console.error("Error al guardar en Cloud Firestore:", error);
+        alert("Hubo un error al procesar tu reserva en la nube. Intenta de nuevo.");
+    }
+});
 
     console.log("Sistema del Hotel Paradiso Operativo 🛡️");
 });

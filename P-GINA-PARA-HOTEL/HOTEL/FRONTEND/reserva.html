@@ -249,6 +249,42 @@
         }
     </script>
     
+        <!-- Firebase SDK (Módulos necesarios) -->
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+   
+    const firebaseConfig = {
+        apiKey: "AIzaSyDGt8kUlJkqhTLx2wNi1eaY-8oONO5VId0",
+        authDomain: "hotel-project-a24d0.firebaseapp.com",
+        projectId: "hotel-project-a24d0",
+        storageBucket: "hotel-project-a24d0.firebasestorage.app",
+        messagingSenderId: "14169222389",
+        appId: "1:14169222389:web:3fb8f24c04ac829d66e9bc"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Compartir con validacion.js
+    window.db = db;
+    window.addDoc = addDoc;
+    window.collection = collection;
+    </script>
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Exportar a la ventana global para que validacion.js lo vea
+    window.db = db;
+    window.addDoc = addDoc;
+    window.collection = collection;
+    </script>
+
+    <!-- Tu archivo de validación -->
     <script src="src/js/validacion.js"></script>
 </body>
 </html>
