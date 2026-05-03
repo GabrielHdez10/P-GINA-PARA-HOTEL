@@ -10,10 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. PRECIOS POR HABITACIÓN
     const precios = {
-        'suite_paradiso': 2500,
-        'doble_lujo': 1800,
-        'estudio_paz': 1500
-    };
+    'suite_paradiso': 2500,
+    'suite_imperial': 3200,
+    'junior_suite': 2800,
+    'doble_premium': 2100,
+    'doble_lujo': 1800,
+    'doble_standard': 1600,
+    'estudio_loft': 2050,
+    'estudio_paz': 1500,
+    'estudio_zen': 1400
+};
 
     // 3. FUNCIÓN DE CÁLCULO DINÁMICO
     const calcularCostoTotal = () => {

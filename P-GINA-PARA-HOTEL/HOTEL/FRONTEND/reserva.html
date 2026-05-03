@@ -138,12 +138,30 @@
                                     <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-amber-600">
                                         <i class="fas fa-bed text-sm"></i>
                                     </div>
-                                    <select id="tipoHabitacion" name="tipoHabitacion" required
-                                            class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 pl-14 text-sm text-slate-900 placeholder:text-gray-300 focus:ring-2 focus:ring-amber-200 focus:border-amber-400 outline-none transition duration-150 appearance-none">
-                                        <option value="" disabled selected>Selecciona una opción</option>
-                                        <option value="suite_paradiso">Suite Paradiso (Vista al mar)</option>
-                                        <option value="doble_lujo">Doble de Lujo (Familiar)</option>
-                                        <option value="estudio_paz">Estudio Paz (Solo adultos)</option>
+                                    <select id="tipoHabitacion" name="tipoHabitacion" required 
+                                         class="w-full bg-white border border-gray-200 rounded-xl px-6 py-4 text-sm focus:ring-2 focus:ring-amber-200 outline-none appearance-none">
+                                    
+                                         <option value="" disabled selected>Selecciona una opción</option>
+                                        <!-- Suites -->
+                                        <optgroup label="Suites ($2,000+)">
+                                            <option value="suite_paradiso">Suite Paradiso - $2,500</option>
+                                            <option value="suite_imperial">Suite Imperial - $3,200</option>
+                                            <option value="junior_suite">Junior Suite - $2,800</option>
+                                        </optgroup>
+
+                                        <!-- Dobles -->
+                                        <optgroup label="Habitaciones Dobles">
+                                            <option value="doble_premium">Doble Premium - $2,100</option>
+                                            <option value="doble_lujo">Doble de Lujo - $1,800</option>
+                                            <option value="doble_standard">Doble Standard - $1,600</option>
+                                        </optgroup>
+
+                                        <!-- Estudios -->
+                                        <optgroup label="Estudios">
+                                            <option value="estudio_loft">Estudio Loft - $2,050</option>
+                                            <option value="estudio_paz">Estudio Paz - $1,500</option>
+                                            <option value="estudio_zen">Estudio Zen - $1,400</option>
+                                        </optgroup>
                                     </select>
                                     <!-- Icono de flecha para el select -->
                                     <div class="absolute inset-y-0 right-0 pr-6 flex items-center pointer-events-none text-gray-400">
