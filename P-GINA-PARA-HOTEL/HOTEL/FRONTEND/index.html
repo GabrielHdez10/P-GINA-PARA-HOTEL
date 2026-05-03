@@ -96,9 +96,34 @@
         </section>
 
         <!-- SECCIÓN HABITACIONES CON FILTROS DINÁMICOS -->
+        <section id="habitaciones" class="max-w-7xl mx-auto px-6 py-16 md:py-32">
+    
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6">
+            <div class="max-w-xl">
+                <h2 class="text-3xl md:text-6xl font-bold text-blue-950 mb-4 md:mb-6 leading-tight font-serif">Estancias con Alma</h2>
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed italic">Refugios de paz que combinan el lujo con la naturaleza de Tecolutla.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 w-full md:w-auto">
+                <select id="filtro-tipo" class="bg-slate-50 border border-gray-200 rounded-full px-6 py-3 text-[10px] font-bold uppercase tracking-widest outline-none focus:ring-2 focus:ring-amber-200 cursor-pointer">
+                    <option value="todos">Todos los tipos</option>
+                    <option value="suite">Suites</option>
+                    <option value="doble">Dobles</option>
+                    <option value="estudio">Estudios</option>
+                </select>
+
+                <select id="filtro-precio" class="bg-slate-50 border border-gray-200 rounded-full px-6 py-3 text-[10px] font-bold uppercase tracking-widest outline-none focus:ring-2 focus:ring-amber-200 cursor-pointer">
+                    <option value="todos">Cualquier precio</option>
+                    <option value="bajo">Menos de $2,000</option>
+                    <option value="alto">$2,000 o más</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grid de Habitaciones (Asegúrate de que este ID se mantenga para filtros.js) -->
         <div id="grid-habitaciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
             
-            <!-- 1. Suite Paradiso (Suite - Alto) -->
+            <!-- 1. Suite Paradiso -->
             <div class="habitacion-card group transition-all duration-500" data-tipo="suite" data-precio="2500">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Suite Paradiso">
