@@ -124,83 +124,109 @@
         <div id="grid-habitaciones" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16">
             
             <!-- 1. Suite Paradiso -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="suite" data-precio="2500">
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="suite" data-precio="2500" onclick="abrirCuarto('Suite Paradiso', ['https://images.unsplash.com/photo-1618773928121-c32242e63f39', 'https://images.unsplash.com/photo-1776500587875-8a0653e9c10e?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Suite Paradiso">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Suite Paradiso</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Exclusividad Máxima | $2,500</p>
             </div>
 
-            <!-- 2. Doble de Lujo (Doble - Bajo) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="doble" data-precio="1800">
+            <!-- 2. Doble de Lujo -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="doble" data-precio="1800" onclick="abrirCuarto('Doble de Lujo', ['https://images.unsplash.com/photo-1590490360182-c33d57733427', 'https://images.unsplash.com/photo-1566665797739-1674de7a421a'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Doble de Lujo">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Doble de Lujo</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Confort Familiar | $1,800</p>
             </div>
 
-            <!-- 3. Estudio Paz (Estudio - Bajo) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="estudio" data-precio="1500">
+            <!-- 3. Estudio Paz -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="estudio" data-precio="1500" onclick="abrirCuarto('Estudio Paz', ['https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf', 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Estudio Paz">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Estudio Paz</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Minimalismo | $1,500</p>
             </div>
 
-            <!-- 4. Suite Imperial (Suite - Alto) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="suite" data-precio="3200">
+            <!-- 4. Suite Imperial -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="suite" data-precio="3200" onclick="abrirCuarto('Suite Imperial', ['https://images.unsplash.com/photo-1582719478250-c89cae4dc85b', 'https://images.unsplash.com/photo-1611892440504-42a792e24d32'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Suite Imperial">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Suite Imperial</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Jacuzzi Privado | $3,200</p>
             </div>
 
-            <!-- 5. Doble Premium (Doble - Alto) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="doble" data-precio="2100">
+            <!-- 5. Doble Premium -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="doble" data-precio="2100" onclick="abrirCuarto('Doble Premium', ['https://images.unsplash.com/photo-1566665797739-1674de7a421a', 'https://images.unsplash.com/photo-1590490360182-c33d57733427'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Doble Premium">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Doble Premium</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Balcón Panorámico | $2,100</p>
             </div>
 
-            <!-- 6. Estudio Zen (Estudio - Bajo) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="estudio" data-precio="1400">
+            <!-- 6. Estudio Zen -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="estudio" data-precio="1400" onclick="abrirCuarto('Estudio Zen', ['https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af', 'https://images.unsplash.com/photo-1493809842364-78817add7ffb'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Estudio Zen">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Estudio Zen</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Ideal para nómadas | $1,400</p>
             </div>
 
-            <!-- 7. Junior Suite (Suite - Alto) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="suite" data-precio="2800">
+            <!-- 7. Junior Suite -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="suite" data-precio="2800" onclick="abrirCuarto('Junior Suite', ['https://plus.unsplash.com/premium_photo-1670360414483-64e6d9ba9038?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://plus.unsplash.com/premium_photo-1670950411951-86aff6e94812?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Junior Suite">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Junior Suite</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Estilo Colonial | $2,800</p>
             </div>
 
-            <!-- 8. Doble Standard (Doble - Bajo) -->
-            <div class="habitacion-card group transition-all duration-500" data-tipo="doble" data-precio="1600">
+            <!-- 8. Doble Standard -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="doble" data-precio="1600" onclick="abrirCuarto('Doble Standard', ['https://images.unsplash.com/photo-1743410973740-153f463a74e0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1590490360182-c33d57733427'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Doble Standard">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Doble Standard</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Práctica y Cómoda | $1,600</p>
             </div>
 
-            <!-- 9. Estudio Loft (Estudio - Alto) -->
-
-            <div class="habitacion-card group transition-all duration-500" data-tipo="estudio" data-precio="2050">
+            <!-- 9. Estudio Loft -->
+            <div class="habitacion-card group transition-all duration-500 cursor-pointer" data-tipo="estudio" data-precio="2050" onclick="abrirCuarto('Estudio Loft', ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688', 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af'])">
                 <div class="relative overflow-hidden mb-6 rounded-lg shadow-lg aspect-[4/5]">
                     <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80" 
                         class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt="Estudio Loft">
+                    <div class="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/40 transition-colors flex items-center justify-center">
+                        <span class="text-white border border-white px-4 py-2 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">VER INTERIOR</span>
+                    </div>
                 </div>
                 <h3 class="text-xl md:text-2xl font-bold mb-2">Estudio Loft</h3>
                 <p class="text-[10px] text-amber-600 uppercase tracking-widest font-semibold">Diseño Moderno | $2,050</p>
@@ -357,6 +383,21 @@
 </section>
 
     </main>
+
+    <!-- MODAL DE VISTA INTERIOR -->
+    <div id="room-modal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl relative">
+            <button onclick="cerrarCuarto()" class="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white p-2 rounded-full text-blue-950 shadow-md transition-all">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="p-8">
+                <h2 id="modal-room-title" class="text-3xl font-bold text-blue-950 mb-6 font-serif uppercase tracking-widest">Interior</h2>
+                <div id="modal-images-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Las imágenes se inyectan aquí con JS -->
+                </div>
+            </div>
+        </div>
+    </div>
     
     <footer class="bg-slate-50 border-t border-gray-100 py-12 md:py-20 text-center px-6">
         <div class="mb-6 md:mb-8">
@@ -391,15 +432,49 @@
 </script>
 
 
-
-
     <script>
     function toggleMenu() {
         const menu = document.getElementById('mobile-menu');
         menu.classList.toggle('hidden');
+    }
+
+    // FUNCIONES PARA EL MODAL (NUEVA LÓGICA)
+    function abrirCuarto(nombre, imagenes) {
+        const modal = document.getElementById('room-modal');
+        const titulo = document.getElementById('modal-room-title');
+        const container = document.getElementById('modal-images-container');
+        
+        titulo.innerText = nombre;
+        container.innerHTML = ''; // Limpiar fotos anteriores
+        
+        imagenes.forEach(imgUrl => {
+            const div = document.createElement('div');
+            div.className = "overflow-hidden rounded-xl shadow-lg h-64";
+            div.innerHTML = `<img src="${imgUrl}?auto=format&fit=crop&w=800" class="w-full h-full object-cover">`;
+            container.appendChild(div);
+        });
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Detener scroll de fondo
+    }
+
+    function cerrarCuarto() {
+        const modal = document.getElementById('room-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Habilitar scroll
+    }
+
+    // Cerrar si hace clic fuera del contenido blanco
+    window.onclick = function(event) {
+        const modal = document.getElementById('room-modal');
+        if (event.target == modal) {
+            cerrarCuarto();
+        }
     }
     </script>
 
 <script type="module" src="src/js/main.js"></script>
 <script src="src/js/contacto.js"></script>
 <script src="src/js/filtros.js"></script>
+</body>
+</html>
